@@ -1,0 +1,223 @@
+{% extends 'blog/base.html' %}
+{% load static %}
+{% load hitcount_tags %}
+
+{% block header %}
+<header class="masthead" style="background-image: url('static/img/home-bg.jpg')">
+  <div class="overlay"></div>
+      <div class="container">
+          <div class="col-lg-8 col-md-10 mx-auto">
+            <div class="site-heading">
+              <h1>{ CodeCuration }</h1>
+              <span class="subheading">qwerty qwerty qwerty qwerty qwerty</span>
+            </div>
+      </div>
+  </div>
+</header>
+{% endblock %}
+
+
+{% block content %}
+  <div class="col-sm-12">
+    <div class="container">
+    <div class="row">
+<div class="col-sm-8">
+<div class="container">
+  {% for post in post_list %}
+
+  <div class="card mb-3">
+    {% if post.image %}
+  <img class="card-img-top" style="max-height: 354px;
+    max-width: 755px;" src={{post.image.url}} alt="Card image" </img> {% endif %}
+  <div class="card-body post-preview">
+
+    <a href="{% url 'post_detail' slug=post.slug %}">
+      <h2 class="post-title" style="margin-top: 0px;">{{ post.title }}</h2>
+    </a>
+      <p class="post-meta">Posted by
+        <a href="#">{{ post.author }}</a>
+        on {{ post.published_date|date:'d M,  Y'}} in
+        <a href="{% url 'list_post_by_category' category_slug=post.category.slug %}">{{ post.category}}</a>
+        views {{ hitcount.total_hits }}
+
+      </p>
+        <p class="card-text">{{ post.text|safe|truncatechars:150 }}
+        <a href="{% url 'post_detail' slug=post.slug %}">Read more</a>
+      </p>
+  </div>
+</div>
+   {% endfor %}
+
+
+</div>
+
+
+</div>
+
+
+
+
+
+
+
+<div class="col-sm-4">
+  <div class="container ">
+<div class="card" >
+  <div class="card-header">
+    Categories
+  </div>
+  <div class="card-body">
+  <ul class="list-group list-group-flush">
+    {% for category in category_list %}
+    <li class="list-group-item post-title"><a href="{% url 'list_post_by_category' category_slug=category.slug %}">{{ category }}</a></li>
+    {% endfor %}
+  </ul>
+</div>
+  </div>
+  </div>
+  <br>
+
+<div class="container ">
+  <!--<div class="card mb-3">-->
+  <div class="card">
+
+     <div class="card-header">
+       About Me
+     </div>
+
+<div class="card-body">
+  <img class="card-img-top" src='static/img/Tanmay.jpg' alt="Card image cap">
+    <p class="card-text">Hello humans, This is a wider card with supporting text below as a natural lead-in to additional content.
+      This content is a little bit longer<a href="{% url 'about' %}">(More about me..)</a></p>
+</div>
+</div>
+
+
+
+
+
+  <!--<div class="card text-center">-->
+  <!--<div class="card-header">-->
+    <!--Featured-->
+  <!--</div>-->
+    <!--<div class="card-body">-->
+  <!--<a href="{% url 'about' %}">-->
+  <!--<div class="card" style="width: 18rem;">-->
+  <!--<img class="card-img-top" src= 'static/img/Tanmay.jpg' alt="Card image cap">-->
+  <!--<div class="card-body">-->
+    <!--<p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>-->
+  <!--</div>-->
+    <!--</div>-->
+    <!--</a>-->
+<!--</div>-->
+    <!--</div>-->
+  </div>
+  </div>
+
+
+
+<!--<div class="col-sm-4">-->
+  <!--</div>-->
+    <!--</div>-->
+      <!--<div class="row">-->
+        <!--<div class="col-sm-8">-->
+          <!--<div class="post-preview">-->
+              <!--{% for post in post_list %}-->
+            <!--<a href="{% url 'post_detail' slug=post.slug %}">-->
+              <!--<h2 class="post-title">-->
+                <!--{{ post.title }}-->
+              <!--</h2>-->
+              <!--<h3 class="date">-->
+                <!--Published on: {{ post.published_date|date:"D M Y"}}-->
+              <!--</h3>-->
+            <!--</a>-->
+            <!--<p class="post-meta">Posted by-->
+              <!--<a href="#">{{ post.author }}</a>-->
+              <!--on September 24, 2018</p>-->
+            <!--<a href="{% url 'post_detail' slug=post.slug %}">Comments: {{ post.approve_comments.count }}</a>-->
+            <!--<a href="{% url 'list_post_by_category' category_slug=post.category.slug %}">{{ post.category }}</a>-->
+              <!--{% endfor %}-->
+          <!--</div>-->
+          <!--</div>-->
+        <!--</div>-->
+          <!--<hr>-->
+                      </div>
+    </div>
+    </div>
+{% endblock %}
+
+{% block pagination %}
+
+{% if is_paginated %}
+    <nav aria-label="Page navigation">
+        <ul class="pagination justify-content-center">
+            <!-- << PREVIOUS PART -->
+            <!-- << Disable 'Previous' page button if you are at the 1st page -->
+            {% if not page_obj.has_previous %}
+                <li class="page-item disabled">
+                    <a class="page-link" href="#" tabindex="-1" aria-label="Previous">
+
+            {% elif page_obj.previous_page_number == 1 %}
+                <li class="page-item">
+                    <a class="page-link" href="{% url 'Post_List'%}" aria-label="Previous">
+
+
+            <!-- << If you are at the 2nd page,
+            'Previous' page button will get '/profiles/' url instead of '/profiles/?page=1' -->
+            {% elif page_obj.previous_page_number %}
+
+                <li class="page-item">
+                    <a class="page-link" href="?page={{ page_obj.previous_page_number }}" aria-label="Previous">
+            {% endif %}
+
+                        <span aria-hidden="true">&laquo;</span>
+                        <span class="sr-only">Previous</span>
+                    </a>
+                </li>
+
+            <!-- PAGES PART -->
+            {% for num in paginator.page_range %}
+                <!-- Active page -->
+                {% if num == page_obj.number %}
+                    <li class="page-item active">
+                        <a class="page-link" href="#">{{ num }}<span class="sr-only">(current)</span></a>
+                    </li>
+
+                {% else %}
+                    <li class="page-item">
+                        <!-- For the 1st page we do not use ?page=1 -->
+                        {% if num == 1 %}
+                            <a class="page-link" href="{% url 'Post_List'%}">{{ num }}</a>
+
+                        {% else %}
+
+                                <a class="page-link" href="?page={{ num }}">{{ num }}</a>
+                            {% endif %}
+
+                                            </li>
+                {% endif %}
+
+            {% endfor %}
+
+            <!-- >> NEXT PART -->
+            {% if not page_obj.has_next %}
+                <!-- << Disable 'Next' page button if you are at the last page -->
+                <li class="page-item disabled">
+                    <a class="page-link" href="#" tabindex="-1" aria-label="Next">
+
+            {% else %}
+                <li class="page-item">
+                    <a class="page-link" href="?page={{ page_obj.next_page_number }}" aria-label="Next">
+            {% endif %}
+
+                        <span aria-hidden="true">&raquo;</span>
+                        <span class="sr-only">Next</span>
+                    </a>
+                </li>
+
+        </ul>
+    </nav>
+  </div>
+{% endif %}
+
+{% endblock %}

@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static from staticfiles %}
+
+  <head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>{CodeCuration}</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="{% static 'vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+
+    <!-- Custom fonts for this template -->
+    <link href="{% static 'vendor/font-awesome/css/font-awesome.min.css' %}" rel="stylesheet" type="text/css">
+    <link href='https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+
+    <!-- Custom styles for this template -->
+    <link href="{% static 'css/clean-blog.min.css' %}" rel="stylesheet">
+
+  </head>
+
+  <body style="background-color:#e6e6e6;">
+
+    <!-- Navigation -->
+
+    <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
+      <div class="container">
+        <a class="navbar-brand" href="{% url 'Post_List'%}">{CodeCuration}</a>
+        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+          Menu
+          <i class="fa fa-bars"></i>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'Post_List' %}">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'about'%}">About</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'Post_List' %}">All Post</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'contact' %}">Contact</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+    </nav>
+
+    <!-- Page Header -->
+    {% block header %}
+
+    {% endblock %}
+
+
+    <!-- Main Content -->
+
+                    {% block content %}
+                    {% endblock %}
+
+
+    <!--<div class="container">-->
+      <!--<div class="row">-->
+        <!--<div class="col-sm-9">-->
+          <!--<div class="post-preview">-->
+            <!--<a href="post.html">-->
+              <!--<h2 class="post-title">-->
+                <!--Man must explore, and this is exploration at its greatest-->
+              <!--</h2>-->
+              <!--<h3 class="post-subtitle">-->
+                <!--Problems look mighty small from 150 miles up-->
+              <!--</h3>-->
+            <!--</a>-->
+            <!--<p class="post-meta">Posted by-->
+              <!--<a href="#">Start Bootstrap</a>-->
+              <!--on September 24, 2018</p>-->
+          <!--</div>-->
+          <!--</div>-->
+          <!--<div class="col-sm-3">-->
+          <!--<div class="post-preview">-->
+            <!--<a href="post.html">-->
+              <!--<h2 class="post-title">-->
+                <!--Man must explore, and this is exploration at its greatest-->
+              <!--</h2>-->
+              <!--<h3 class="post-subtitle">-->
+                <!--Problems look mighty small from 150 miles up-->
+              <!--</h3>-->
+            <!--</a>-->
+            <!--<p class="post-meta">Posted by-->
+              <!--<a href="#">Start Bootstrap</a>-->
+              <!--on September 24, 2018</p>-->
+          <!--</div>-->
+          <!--<hr>-->
+
+
+    <div class="col-sm-12">
+      <div class="container">
+        <div class="row">
+          <div class="col-sm-8">
+            <div class="container">
+              <div class="text-center">
+
+                {% block pagination %}
+
+                {% endblock %}
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <hr>
+
+
+    {% block footer %}
+    <!-- Footer -->
+    <footer>
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-8 col-md-10 mx-auto">
+            <ul class="list-inline text-center">
+              <li class="list-inline-item">
+                <a href="https://www.linkedin.com/in/tanmay-deshmukh/">
+                  <span class="fa-stack fa-lg">
+                    <i class="fa fa-circle fa-stack-2x"></i>
+                    <i class="fa fa-linkedin fa-stack-1x fa-inverse"></i>
+                  </span>
+                </a>
+              </li>
+              <li class="list-inline-item">
+                <a href="https://www.facebook.com/tanmay.deshmukh0">
+                  <span class="fa-stack fa-lg">
+                    <i class="fa fa-circle fa-stack-2x"></i>
+                    <i class="fa fa-facebook fa-stack-1x fa-inverse"></i>
+                  </span>
+                </a>
+              </li>
+              <li class="list-inline-item">
+                <a href="https://github.com/tdtanmay">
+                  <span class="fa-stack fa-lg">
+                    <i class="fa fa-circle fa-stack-2x"></i>
+                    <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                  </span>
+                </a>
+              </li>
+               <li class="list-inline-item">
+                <a href="https://www.instagram.com/tanmay.deshmukh03/">
+                  <span class="fa-stack fa-lg">
+                    <i class="fa fa-circle fa-stack-2x"></i>
+                    <i class="fa fa-instagram fa-stack-1x fa-inverse"></i>
+                  </span>
+                </a>
+              </li>
+            </ul>
+            <p class="copyright text-muted">Copyright &copy; www.codecuration.com 2018</p>
+          </div>
+        </div>
+      </div>
+    </footer>
+{% endblock %}
+
+    <!-- Bootstrap core JavaScript -->
+    <script src="{% static 'vendor/jquery/jquery.min.js' %}"></script>
+    <script src="{% static 'vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+
+    <!-- Custom scripts for this template -->
+    <script src="{% static 'js/clean-blog.min.js' %}"></script>
+
+  </body>
+
+</html>
+<!--<!DOCTYPE html>-->
+<!--{%load staticfiles%}-->
+<!--<html>-->
+    <!--<head>-->
+        <!--<title>Blog Project</title>-->
+        <!--&lt;!&ndash; Latest compiled and minified CSS &ndash;&gt;-->
+        <!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">-->
+
+        <!--&lt;!&ndash; Optional theme &ndash;&gt;-->
+        <!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">-->
+
+        <!--{# MEDIUM STYLE EDITOR#}-->
+        <!--<script src="//cdn.jsdelivr.net/medium-editor/latest/js/medium-editor.min.js"></script>-->
+        <!--<link rel="stylesheet" href="//cdn.jsdelivr.net/medium-editor/latest/css/medium-editor.min.css" type="text/css" media="screen" charset="utf-8">-->
+
+
+        <!--{# Custom CSS#}-->
+        <!--<link rel="stylesheet" href="{% static 'css/blog.css' %}">-->
+
+        <!--{# Fonts#}-->
+        <!--<link href="https://fonts.googleapis.com/css?family=Montserrat|Russo+One" rel="stylesheet">-->
+
+
+
+
+
+<!--<body class="loader">-->
+
+<!--&lt;!&ndash;NAVBAR&ndash;&gt;-->
+
+  <!--<nav class="navbar navbar-default techfont custom-navbar">-->
+    <!--<div class="container">-->
+
+
+      <!--<ul class="nav navbar-nav">-->
+        <!--<li><a class='navbar-brand bigbrand' href="{% url 'Post_List' %}">The Tech blog</a></li>-->
+        <!--<li><a href="{% url 'about'%}">About</a></li>-->
+        <!--<li><a href="https://www.github.com">Github</a></li>-->
+        <!--<li><a href="https://www.linkedin.com">LinkedIn</a></li>-->
+
+      <!--</ul>-->
+
+      <!--<ul class="nav navbar-nav navbar-right">-->
+        <!--{% if user.is_authenticated %}-->
+        <!--<li>-->
+          <!--<a href="{% url 'post_new' %}" >New Post</a>-->
+        <!--</li>-->
+
+        <!--<li>-->
+          <!--<a href="{% url 'post_draft_list' %}">Drafts</a>-->
+        <!--</li>-->
+        <!--<li>-->
+          <!--<a href="{% url 'logout' %}" >Log out</a>-->
+        <!--</li>-->
+
+        <!--<li>-->
+          <!--<a >Welcome: {{ user.username }}</a>-->
+        <!--</li>-->
+          <!--{% else %}-->
+          <!--<li><a class='nav navbar-right' href="{% url 'login' %}" ><span class="glyphicon glyphicon-user"></span></a></li>-->
+        <!--{% endif %}-->
+
+      <!--</ul>-->
+  <!--</div>-->
+<!--</nav>-->
+
+
+
+                <!--</div>-->
+            <!--</div>-->
+        <!--</div>-->
+
+
+<!--</body>-->
+<!--</html>-->
