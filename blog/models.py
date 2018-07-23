@@ -6,7 +6,9 @@ from ckeditor_uploader.fields import RichTextUploadingField
 from django.db import models
 from django.template.defaultfilters import slugify
 from django.contrib.auth.models import User
-from hitcount.models import HitCountMixin
+from django.contrib.contenttypes.fields import GenericRelation
+
+from hitcount.models import HitCount, HitCountMixin
 
 # Create your models here.
 class Category(models.Model):
@@ -50,6 +52,10 @@ class Post(models.Model, HitCountMixin):
     visits = models.IntegerField(default=0)
     image = models.ImageField(upload_to='blog/static/img', null=True, blank=True,
                               verbose_name="Image")
+    hit_count_generic = GenericRelation(
+        HitCount, object_id_field='object_pk',
+        related_query_name='hit_count_generic_relation')
+
 
     def save(self, *args, **kwargs):
         if self.slug == 'undefined' or not self.slug:

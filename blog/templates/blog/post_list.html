@@ -38,7 +38,7 @@
         <a href="#">{{ post.author }}</a>
         on {{ post.published_date|date:'d M,  Y'}} in
         <a href="{% url 'list_post_by_category' category_slug=post.category.slug %}">{{ post.category}}</a>
-        views {{ hitcount.total_hits }}
+        views {{post.hit_count.hits}}
 
       </p>
         <p class="card-text">{{ post.text|safe|truncatechars:150 }}
