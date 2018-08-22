@@ -18,84 +18,72 @@
 
 
 {% block content %}
-  <div class="col-sm-12">
     <div class="container">
     <div class="row">
-<div class="col-sm-8">
-<div class="container">
-  {% for post in post_list %}
+      <div class="col-sm-8">
+          {% for post in post_list %}
+            <div class="card mb-3">
+              {% if post.image %}
+            <img class="card-img-top" style="max-height: 354px;
+              max-width: 755px;" src={{post.image.url}} alt="Card image" </img> {% endif %}
+            <div class="card-body post-preview">
 
-  <div class="card mb-3">
-    {% if post.image %}
-  <img class="card-img-top" style="max-height: 354px;
-    max-width: 755px;" src={{post.image.url}} alt="Card image" </img> {% endif %}
-  <div class="card-body post-preview">
+              <a href="{% url 'post_detail' slug=post.slug %}">
+                <h2 class="post-title" style="margin-top: 0px;">{{ post.title }}</h2>
+              </a>
+                <p class="post-meta">Posted by
+                  <a href="#">{{ post.author }}</a>
+                  on {{ post.published_date|date:'d M,  Y'}} in
+                  <a href="{% url 'list_post_by_category' category_slug=post.category.slug %}">{{ post.category}}</a>
+                  views {{post.hit_count.hits}}
 
-    <a href="{% url 'post_detail' slug=post.slug %}">
-      <h2 class="post-title" style="margin-top: 0px;">{{ post.title }}</h2>
-    </a>
-      <p class="post-meta">Posted by
-        <a href="#">{{ post.author }}</a>
-        on {{ post.published_date|date:'d M,  Y'}} in
-        <a href="{% url 'list_post_by_category' category_slug=post.category.slug %}">{{ post.category}}</a>
-        views {{post.hit_count.hits}}
+                </p>
+                  <p class="card-text">{{ post.text|safe|truncatechars:150 }}
+                  <a href="{% url 'post_detail' slug=post.slug %}">Read more</a>
+                </p>
+            </div>
+          </div>
+          {% endfor %}
+      </div>
+      <div class="col-sm-4">
+          <div class="profile-card text-center">
 
-      </p>
-        <p class="card-text">{{ post.text|safe|truncatechars:150 }}
-        <a href="{% url 'post_detail' slug=post.slug %}">Read more</a>
-      </p>
-  </div>
-</div>
-   {% endfor %}
+            <img class="img-fluid" src="https://images.unsplash.com/photo-1447877085163-3cce903855cd?crop=entropy&fit=crop&fm=jpg&h=975&ixjsv=2.1.0&ixlib=rb-0.3.5&q=80&w=1925">
+            <div class="profile-info">
 
+              <img class="rounded-circle profile-pic" src="https://pbs.twimg.com/profile_images/910579937089859584/rbsL-1ze_400x400.jpg">
 
-</div>
-
-
-</div>
-
-
-
-
-
-
-
-<div class="col-sm-4">
-  <div class="container ">
-<div class="card" >
-  <div class="card-header">
-    Categories
-  </div>
-  <div class="card-body">
-  <ul class="list-group list-group-flush">
-    {% for category in category_list %}
-    <li class="list-group-item post-title"><a href="{% url 'list_post_by_category' category_slug=category.slug %}">{{ category }}</a></li>
-    {% endfor %}
-  </ul>
-</div>
-  </div>
-  </div>
-  <br>
-
-<div class="container ">
-  <!--<div class="card mb-3">-->
-  <div class="card">
-
-     <div class="card-header">
-       About Me
-     </div>
-
-<div class="card-body">
-  <img class="card-img-top" src='static/img/Tanmay.jpg' alt="Card image cap">
-    <p class="card-text">Hello humans, This is a wider card with supporting text below as a natural lead-in to additional content.
-      This content is a little bit longer<a href="{% url 'about' %}">(More about me..)</a></p>
-</div>
-</div>
-
-
-
-
-
+              <h2 class="hvr-underline-from-center">Rod<span>Digital / Design Consultant</span></h2>
+              <div>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</div>
+              <a href="https://www.twitter.com/mike_youngg"><i class="fa fa-twitter fa-2x"></i></a>
+              <a href="mailto:michael_y@live.co.uk"><i class="fa fa-envelope-o fa-2x"></i></a>
+              <a href="https://www.linkedin.com"><i class="fa fa-linkedin fa-2x"></i></a>
+            </div>
+        </div>
+         <!-- <div class="card" >
+              <div class="card-header">
+                Categories
+              </div>
+              <div class="card-body">
+                <ul class="list-group list-group-flush">
+                  {% for category in category_list %}
+                  <li class="list-group-item post-title"><a href="{% url 'list_post_by_category' category_slug=category.slug %}">{{ category }}</a></li>
+                  {% endfor %}
+                </ul>
+            </div>
+          </div>
+        <br>
+          &lt;!&ndash;<div class="card mb-3">&ndash;&gt;
+          <div class="card">
+             <div class="card-header">
+               About Me
+             </div>
+            <div class="card-body">
+              <img class="card-img-top" src='static/img/.jpg' alt="Card image cap">
+                <p class="card-text">Hello humans, This is a wider card with supporting text below as a natural lead-in to additional content.
+                  This content is a little bit longer<a href="{% url 'about' %}">(More about me..)</a></p>
+            </div>
+          </div>-->
   <!--<div class="card text-center">-->
   <!--<div class="card-header">-->
     <!--Featured-->
@@ -111,8 +99,7 @@
     <!--</a>-->
 <!--</div>-->
     <!--</div>-->
-  </div>
-  </div>
+      </div>
 
 
 
@@ -141,8 +128,7 @@
           <!--</div>-->
         <!--</div>-->
           <!--<hr>-->
-                      </div>
-    </div>
+      </div>
     </div>
 {% endblock %}
 
@@ -165,7 +151,6 @@
             <!-- << If you are at the 2nd page,
             'Previous' page button will get '/profiles/' url instead of '/profiles/?page=1' -->
             {% elif page_obj.previous_page_number %}
-
                 <li class="page-item">
                     <a class="page-link" href="?page={{ page_obj.previous_page_number }}" aria-label="Previous">
             {% endif %}
@@ -194,22 +179,18 @@
                                 <a class="page-link" href="?page={{ num }}">{{ num }}</a>
                             {% endif %}
 
-                                            </li>
+                    </li>
                 {% endif %}
-
             {% endfor %}
-
             <!-- >> NEXT PART -->
             {% if not page_obj.has_next %}
                 <!-- << Disable 'Next' page button if you are at the last page -->
                 <li class="page-item disabled">
                     <a class="page-link" href="#" tabindex="-1" aria-label="Next">
-
             {% else %}
                 <li class="page-item">
                     <a class="page-link" href="?page={{ page_obj.next_page_number }}" aria-label="Next">
             {% endif %}
-
                         <span aria-hidden="true">&raquo;</span>
                         <span class="sr-only">Next</span>
                     </a>
