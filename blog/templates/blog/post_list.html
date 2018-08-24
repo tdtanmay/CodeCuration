@@ -46,44 +46,57 @@
           {% endfor %}
       </div>
       <div class="col-sm-4">
-          <div class="profile-card text-center">
 
-            <img class="img-fluid" src="https://images.unsplash.com/photo-1447877085163-3cce903855cd?crop=entropy&fit=crop&fm=jpg&h=975&ixjsv=2.1.0&ixlib=rb-0.3.5&q=80&w=1925">
-            <div class="profile-info">
-
-              <img class="rounded-circle profile-pic" src="https://pbs.twimg.com/profile_images/910579937089859584/rbsL-1ze_400x400.jpg">
-
-              <h2 class="hvr-underline-from-center">Rod<span>Digital / Design Consultant</span></h2>
-              <div>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</div>
-              <a href="https://www.twitter.com/mike_youngg"><i class="fa fa-twitter fa-2x"></i></a>
-              <a href="mailto:michael_y@live.co.uk"><i class="fa fa-envelope-o fa-2x"></i></a>
-              <a href="https://www.linkedin.com"><i class="fa fa-linkedin fa-2x"></i></a>
-            </div>
-        </div>
-         <!-- <div class="card" >
-              <div class="card-header">
-                Categories
+<figure class="snip1515">
+  <div class="profile-image">
+                <h3>Categories</h3>
               </div>
-              <div class="card-body">
-                <ul class="list-group list-group-flush">
+  <figcaption>
                   {% for category in category_list %}
-                  <li class="list-group-item post-title"><a href="{% url 'list_post_by_category' category_slug=category.slug %}">{{ category }}</a></li>
+                  <h3 class="text-left"> <a href="{% url 'list_post_by_category' category_slug=category.slug %}">{{ category }}</a></h3><hr>
                   {% endfor %}
-                </ul>
-            </div>
-          </div>
-        <br>
-          &lt;!&ndash;<div class="card mb-3">&ndash;&gt;
-          <div class="card">
-             <div class="card-header">
-               About Me
-             </div>
-            <div class="card-body">
-              <img class="card-img-top" src='static/img/.jpg' alt="Card image cap">
-                <p class="card-text">Hello humans, This is a wider card with supporting text below as a natural lead-in to additional content.
-                  This content is a little bit longer<a href="{% url 'about' %}">(More about me..)</a></p>
-            </div>
-          </div>-->
+  </figcaption>
+</figure>
+
+<figure class="snip1515">
+  <div class="profile-image"><img src="{% static 'img/Copy of IMG_3986.JPG' %}" /></div>
+  <figcaption>
+    <h3>Ruby Von Rails</h3>
+    <h4>Public Relations</h4>
+    <p>The only skills I have the patience to learn are those that have no real application in life. </p>
+
+  </figcaption>
+</figure>
+
+
+<figure class="snip1515">
+  <div class="profile-image"><img src="{% static 'img/Copy of IMG_3986.JPG' %}" /></div>
+  <figcaption>
+    <h3>Ruby Von Rails</h3>
+    <h4>Public Relations</h4>
+    <p>The only skills I have the patience to learn are those that have no real application in life. </p>
+    <div class="icons"><a href="#"><i class="ion-social-reddit"></i></a>
+      <a href="#"> <i class="ion-social-twitter"></i></a>
+      <a href="#"> <i class="ion-social-vimeo"></i></a>
+    </div>
+  </figcaption>
+</figure>
+
+
+
+
+        <!--<br>-->
+          <!--&lt;!&ndash;<div class="card mb-3">&ndash;&gt;-->
+          <!--<div class="card">-->
+             <!--<div class="card-header">-->
+               <!--About Me-->
+             <!--</div>-->
+            <!--<div class="card-body">-->
+              <!--<img class="card-img-top" src='static/img/.jpg' alt="Card image cap">-->
+                <!--<p class="card-text">Hello humans, This is a wider card with supporting text below as a natural lead-in to additional content.-->
+                  <!--This content is a little bit longer<a href="{% url 'about' %}">(More about me..)</a></p>-->
+            <!--</div>-->
+          <!--</div>&ndash;&gt;-->
   <!--<div class="card text-center">-->
   <!--<div class="card-header">-->
     <!--Featured-->
@@ -100,8 +113,9 @@
 <!--</div>-->
     <!--</div>-->
       </div>
-
-
+<div class="col-sm-4">
+</div>
+<!-- Card -->
 
 <!--<div class="col-sm-4">-->
   <!--</div>-->
@@ -130,6 +144,7 @@
           <!--<hr>-->
       </div>
     </div>
+
 {% endblock %}
 
 {% block pagination %}
