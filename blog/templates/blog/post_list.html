@@ -47,19 +47,19 @@
       </div>
       <div class="col-sm-4">
 
-<figure class="snip1515">
+<figure class="snip1515 mycatcard">
   <div class="profile-image">
                 <h3>Categories</h3>
               </div>
   <figcaption>
-                  {% for category in category_list %}
-                  <h3 class="text-left"> <a href="{% url 'list_post_by_category' category_slug=category.slug %}">{{ category }}</a></h3><hr>
-                  {% endfor %}
+            {% for category in category_list %}
+            <h3 class="text-left topspace"> <a href="{% url 'list_post_by_category' category_slug=category.slug %}">{{ category }}</a></h3><hr>
+            {% endfor %}
   </figcaption>
 </figure>
 
 <figure class="snip1515">
-  <div class="profile-image"><img src="{% static 'img/Copy of IMG_3986.JPG' %}" /></div>
+  <div class="profile-image"><img src="{% static 'img/about-bg.jpg' %}" /></div>
   <figcaption>
     <h3>Ruby Von Rails</h3>
     <h4>Public Relations</h4>
@@ -70,7 +70,7 @@
 
 
 <figure class="snip1515">
-  <div class="profile-image"><img src="{% static 'img/Copy of IMG_3986.JPG' %}" /></div>
+  <div class="profile-image"><img src="{% static 'img/about-bg.jpg' %}" /></div>
   <figcaption>
     <h3>Ruby Von Rails</h3>
     <h4>Public Relations</h4>

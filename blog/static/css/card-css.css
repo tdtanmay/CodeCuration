@@ -251,3 +251,16 @@ body {
   background-color: #212121;
 }
 
+.mycatcard {
+    margin: 0 1%;
+}
+.mycatcard figcaption {
+    padding: 31px 25px 25px;
+    margin-top: -21px;
+}
+.mycatcard .profile-image {
+    background-color: #F2F2F2;
+}
+.mycatcard .topspace{
+   margin-top: 10px;
+}
