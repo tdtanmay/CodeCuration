@@ -18,11 +18,10 @@
     <link href="{% static 'vendor/font-awesome/css/font-awesome.min.css' %}" rel="stylesheet" type="text/css">
     <link href='https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
-
     <!-- Custom styles for this template -->
     <link href="{% static 'css/clean-blog.min.css' %}" rel="stylesheet">
+    <link href="{% static 'css/card-css.css' %}" rel="stylesheet">
     <link rel="shortcut icon" href="{% static 'favicon.ico' %}"/>
-
   </head>
 
   <body style="background-color:#e6e6e6;">
@@ -51,6 +50,24 @@
               <a class="nav-link" href="{% url 'contact' %}">Contact</a>
             </li>
           </ul>
+          {% if user.is_authenticated %}
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'post_new' %}" >New Post</a>
+        </li>
+
+        <li>
+          <a href="{% url 'post_draft_list' %}">Drafts</a>
+        </li>
+        <li>
+          <a href="{% url 'logout' %}" >Log out</a>
+        </li>
+
+        <li>
+          <a >Welcome: {{ user.username }}</a>
+        </li>
+          {% else %}
+          <li><a class='nav navbar-right' href="{% url 'login' %}" ><span class="glyphicon glyphicon-user"></span></a></li>
+        {% endif %}
         </div>
       </div>
 
@@ -131,7 +148,7 @@
           <div class="col-lg-8 col-md-10 mx-auto">
             <ul class="list-inline text-center">
               <li class="list-inline-item">
-                <a href="https://www.linkedin.com/in/tanmay-deshmukh/">
+                <a href="https://www.linkedin.com/in/tanmay-deshmukh/" target="_blank">
                   <span class="fa-stack fa-lg">
                     <i class="fa fa-circle fa-stack-2x"></i>
                     <i class="fa fa-linkedin fa-stack-1x fa-inverse"></i>
@@ -139,7 +156,7 @@
                 </a>
               </li>
               <li class="list-inline-item">
-                <a href="https://www.facebook.com/tanmay.deshmukh0">
+                <a href="https://www.facebook.com/tanmay.deshmukh0" target="_blank">
                   <span class="fa-stack fa-lg">
                     <i class="fa fa-circle fa-stack-2x"></i>
                     <i class="fa fa-facebook fa-stack-1x fa-inverse"></i>
@@ -147,7 +164,7 @@
                 </a>
               </li>
               <li class="list-inline-item">
-                <a href="https://github.com/tdtanmay">
+                <a href="https://github.com/tdtanmay" target="_blank">
                   <span class="fa-stack fa-lg">
                     <i class="fa fa-circle fa-stack-2x"></i>
                     <i class="fa fa-github fa-stack-1x fa-inverse"></i>
@@ -155,7 +172,7 @@
                 </a>
               </li>
                <li class="list-inline-item">
-                <a href="https://www.instagram.com/tanmay.deshmukh03/">
+                <a href="https://www.instagram.com/tanmay.deshmukh03/" target="_blank">
                   <span class="fa-stack fa-lg">
                     <i class="fa fa-circle fa-stack-2x"></i>
                     <i class="fa fa-instagram fa-stack-1x fa-inverse"></i>
@@ -168,12 +185,27 @@
         </div>
       </div>
     </footer>
+
+    <!--<div class="container social-wrapper">-->
+  <!--<i id="facebook" class="fa fa-facebook-square fa-5x fa-social"></i>-->
+  <!--<i id="twitter" class="fa fa-twitter-square fa-5x fa-social"></i>-->
+  <!--<i id="codepen" class="fa fa-codepen fa-5x fa-social"></i>-->
+  <!--<i id="fcc" class="fa fa-free-code-camp fa-5x fa-social"></i>-->
+  <!--<i id="github" class="fa fa-github-square fa-5x fa-social"></i>-->
+  <!--<i id="instagram" class="fa fa-instagram fa-5x fa-social"></i>-->
+  <!--<i id="linkedin" class="fa fa-linkedin-square fa-5x fa-social"></i>-->
+  <!--<i id="meetup" class="fa fa-meetup fa-5x fa-social"></i>-->
+  <!--<i id="twitch" class="fa fa-twitch fa-5x fa-social"></i>-->
+  <!--<i id="email" class="fa fa-envelope fa-5x fa-social"></i>-->
+<!--</div>-->
+
+
 {% endblock %}
 
     <!-- Bootstrap core JavaScript -->
     <script src="{% static 'vendor/jquery/jquery.min.js' %}"></script>
     <script src="{% static 'vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
-
+    <script src="{% static 'vendor/bootstrap/js/bootstrap.min.js' %}"></script>
     <!-- Custom scripts for this template -->
     <script src="{% static 'js/clean-blog.min.js' %}"></script>
 
