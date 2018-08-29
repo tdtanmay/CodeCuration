@@ -43,7 +43,8 @@ class Category(models.Model):
 
 class Post(models.Model, HitCountMixin):
     author = models.ForeignKey('auth.User')
-    title = models.CharField(max_length=200)
+    title = models.CharField(max_length=100)
+    description = models.CharField(max_length=250, blank=True, null=True)
     text = RichTextUploadingField()
     slug = models.SlugField(default='undefined')
     created_date = models.DateTimeField(default=timezone.now)

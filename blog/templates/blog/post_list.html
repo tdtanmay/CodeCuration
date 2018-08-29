@@ -9,10 +9,11 @@
           <div class="col-lg-8 col-md-10 mx-auto">
             <div class="site-heading">
               <h1>{ CodeCuration }</h1>
-              <span class="subheading">PYTHON = (P)rogrammers (Y)earning (T)o (H)omestead (O)ur (N)oosphere.
-
-- Sean McGrath</span>
+              <span>Python and Django stories..!</span>
             </div>
+            <!--<span class="subheading">PYTHON = (P)rogrammers (Y)earning (T)o (H)omestead (O)ur (N)oosphere.-->
+
+<!-- - Sean McGrath</span>-->
       </div>
   </div>
 </header>
@@ -40,7 +41,8 @@
                   views {{post.hit_count.hits}}
 
                 </p>
-                  <p class="card-text">{{ post.text|safe|truncatechars:150 }}
+                  <!--<p class="card-text">{{ post.text|safe|truncatechars:150 }}-->
+              <p class="card-text">{{ post.description }}
                   <a href="{% url 'post_detail' slug=post.slug %}">Read more</a>
                 </p>
             </div>

@@ -16,8 +16,8 @@
               <span class="meta">Posted by
                 <a href="#">{{ post.author}}</a>
                 on {{ post.published_date|date:'d M,  Y' }} in
-                <a href="{% url 'list_post_by_category' category_slug=post.category.slug %}">{{ post.category}}</a></span>
-                views {{ hitcount.total_hits }}
+                <a href="{% url 'list_post_by_category' category_slug=post.category.slug %}">{{ post.category}} </a> views {{ hitcount.total_hits }}</span>
+
               {% else %}
             <a class="btn btn-default" href="{% url 'post_publish' slug=post.slug %}">Publish</a>
 
