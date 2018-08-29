@@ -112,8 +112,8 @@
 .snip1515 figcaption {
   width: 100%;
   background-color: #ffffff;
-  color: #555;
-  padding: 125px 25px 25px;
+  color: #000;
+  padding: 125px 25px 5px;
   margin-top: -100px;
   display: inline-block;
 }
