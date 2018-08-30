@@ -33,7 +33,8 @@ urlpatterns = [
     url(r'^accounts/login/$', views.login, name='login'),
     url(r'^accounts/logout/$', views.logout, name='logout', kwargs={'next_page': '/'}),
     url(r'^ckeditor/', include('ckeditor_uploader.urls')),
-    url(r'^googlec1837cd76837d92f\.html$', lambda r: HttpResponse("google-site-verification: googlec1837cd76837d92f.html", mimetype="text/plain"),
-    url(r'^sitemap\.xml/$', sitemap, {'sitemaps' : sitemaps } , name='sitemap'),
-)
+    url(r'^googlec1837cd76837d92f\.html/$', lambda request: HttpResponse("google-site-verification: googlec1837cd76837d92f.html")),
+    url(r'^robots\.txt$', lambda r: HttpResponse("User-agent: *\nDisallow: ", mimetype="text/plain")),
+    url(r'^sitemap\.xml/$', sitemap, {'sitemaps': sitemaps}, name='sitemap'),
+
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
