@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
 from django.utils import timezone
-from django.core.urlresolvers import reverse
+from django.urls import reverse
 from ckeditor_uploader.fields import RichTextUploadingField
 from django.db import models
 from django.template.defaultfilters import slugify
@@ -42,14 +42,14 @@ class Category(models.Model):
 
 
 class Post(models.Model, HitCountMixin):
-    author = models.ForeignKey('auth.User')
+    author = models.ForeignKey('auth.User', on_delete=models.CASCADE,)
     title = models.CharField(max_length=100)
     description = models.CharField(max_length=250, blank=True, null=True)
     text = RichTextUploadingField()
     slug = models.SlugField(default='undefined')
     created_date = models.DateTimeField(default=timezone.now)
     published_date = models.DateTimeField(blank=True, null=True)
-    category = models.ForeignKey('Category', null=True, blank=True)
+    category = models.ForeignKey('Category', on_delete=models.CASCADE, null=True, blank=True)
     visits = models.IntegerField(default=0)
     image = models.ImageField(upload_to='blog/static/img', null=True, blank=True,
                               verbose_name="Image")
@@ -92,7 +92,7 @@ class Post(models.Model, HitCountMixin):
 
 
 class Comment(models.Model):
-    post = models.ForeignKey('blog.Post', related_name='comments')
+    post = models.ForeignKey('blog.Post', related_name='comments', on_delete=models.CASCADE)
     author = models.CharField(max_length=200)
     text = models.TextField()
     created_date = models.DateTimeField(default=timezone.now)

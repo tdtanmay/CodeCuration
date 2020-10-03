@@ -17,7 +17,7 @@ from django.conf.urls import url, include
 from django.contrib import admin
 from django.conf import settings
 from django.conf.urls.static import static
-from django.contrib.auth import views
+from django.contrib.auth import views as auth_views
 from django.http import HttpResponse
 from .sitemaps import PostSitemap
 from django.contrib.sitemaps.views import sitemap
@@ -30,8 +30,8 @@ sitemaps = {
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'', include('blog.urls')),
-    url(r'^accounts/login/$', views.login, name='login'),
-    url(r'^accounts/logout/$', views.logout, name='logout', kwargs={'next_page': '/'}),
+    url(r'^accounts/login/$', auth_views.LoginView, name='login'),
+    url(r'^accounts/logout/$', auth_views.LogoutView, name='logout', kwargs={'next_page': '/'}),
     url(r'^ckeditor/', include('ckeditor_uploader.urls')),
     url(r'^googlec1837cd76837d92f\.html/$', lambda request: HttpResponse("google-site-verification: googlec1837cd76837d92f.html")),
     url(r'^robots\.txt$', lambda r: HttpResponse("User-agent: *\nDisallow: ", mimetype="text/plain")),
