@@ -16,6 +16,7 @@ SITE_ID = 2
 # BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 BASE_DIR = os.path.join(os.path.dirname(__file__), '../..')
 TEMPLATE_DIR = (os.path.join(BASE_DIR, 'blog/templates/blog'))
+# print "##############################"+BASE_DIR+'@@@@@'
 
 
 # Quick-start development settings - unsuitable for production
@@ -143,13 +144,24 @@ CKEDITOR_IMAGE_BACKEND = "pillow"
 
 CKEDITOR_CONFIGS = {
     'default': {
-        'toolbar': None,
+        'toolbar': 'Advanced',
+        'width': 758,
+        'height': 300,
     },
 }
-
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
-DEFAULT_FROM_EMAIL = 'testing@example.com'
+DEFAULT_FROM_EMAIL = 'tanmay@codecuration.com'
 EMAIL_HOST_USER = ''
 EMAIL_HOST_PASSWORD = ''
 EMAIL_USE_TLS = False
 EMAIL_PORT = 1025
+
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'blog_db_prod',
+        'USER': 'tanmay',
+        'PASSWORD': '123',
+        'PORT': '5432',
+    }
+}

@@ -27,7 +27,7 @@ from .forms import ContactForm # Add this
 
 # Create your views here.
 class AboutView(TemplateView):
-    template_name = 'about.html'
+    template_name = 'blog/about.html'
 
 class PostListView(ListView):
     paginate_by = 4
@@ -81,7 +81,7 @@ class PostDeleteView(LoginRequiredMixin, DeleteView):
     success_url = reverse_lazy('Post_List')
 
 
-class DraftListView(LoginRequiredMixin,ListView):
+class DraftListView(LoginRequiredMixin, ListView):
     login_url = '/login/'
     redirect_field_name = 'blog/post_list.html'
 
@@ -153,4 +153,4 @@ def contact_us(request):
     else:
         form = ContactForm()
 
-    return render(request, 'contact-us.html', {'form': form})
+    return render(request, 'blog/contact-us.html', {'form': form})
