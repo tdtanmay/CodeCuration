@@ -28,9 +28,10 @@ class CommentForm(forms.ModelForm):
 
 
 class ContactForm(forms.Form):
-    name = forms.CharField(max_length=100)
-    email = forms.EmailField()
-    message = forms.CharField(widget=forms.Textarea)
+    name = forms.CharField(max_length=30,
+                           widget=forms.TextInput(attrs={'class': "form-control", 'placeholder': "First Name"}))
+    email = forms.EmailField(widget=forms.EmailInput(attrs={'class': "form-control", 'placeholder': "Email"}))
+    message = forms.CharField(widget=forms.Textarea(attrs={'class': "form-control", 'placeholder': "First Name"}))
 
     def __init__(self, *args, **kwargs):
         super(ContactForm, self).__init__(*args, **kwargs)

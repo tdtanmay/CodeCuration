@@ -1,99 +1,121 @@
 {% extends 'blog/base.html' %}
-{% load static %}   
+{% load static %}
 
 {% block header %}
 <header class="masthead" style="background-image:  url('{% static "img/contact-bg.jpg" %}')">
-      <div class="overlay"></div>
-      <div class="container">
-        <div class="row">
-          <div class="col-lg-8 col-md-10 mx-auto">
-            <div class="page-heading">
-              <h1>Contact Me</h1>
-              <span class="subheading">Have questions? I have answers.</span>
-              </div>
-          </div>
-        </div>
+<div class="overlay"></div>
+<div class="container">
+  <div class="row">
+    <div class="col-lg-8 col-md-10 mx-auto">
+      <div class="page-heading">
+        <h1>Contact Me</h1>
+        <span class="subheading">Have questions? I have answers.</span>
       </div>
-    </header>
+    </div>
+  </div>
+</div>
+</header>
 {% endblock %}
 
 {% block content %}
 
 
-    <!-- Main Content -->
+<!-- Main Content -->
 <div class="container">
-      <div class="row">
-        <div class="col-lg-8 col-md-10 mx-auto">
-          <p>Want to get in touch? Fill out the form below to send me a message and I will get back to you as soon as possible!</p>
-          <!-- Contact Form - Enter your email address on line 19 of the mail/contact_me.php file to make this form work. -->
-          <!-- WARNING: Some web hosts do not allow emails to be sent through forms to common mail hosts like Gmail or Yahoo. It's recommended that you use a private domain email address! -->
-          <!-- To use the contact form, your site must be on a live web host with PHP! The form will not work locally! -->
-              <h1>Contact</h1>
-          <form role="form" action="" method="post">
-              {% csrf_token %}
-              {{ form.as_p }}
-              <button type="submit">Submit</button>
-          </form>
+  <div class="row">
+    <div class="col-lg-8 col-md-10 mx-auto">
+      <p>Want to get in touch? Fill out the form below to send me a message and I will get back to you as soon as
+        possible!</p>
+      <!-- Contact Form - Enter your email address on line 19 of the mail/contact_me.php file to make this form work. -->
+      <!-- WARNING: Some web hosts do not allow emails to be sent through forms to common mail hosts like Gmail or Yahoo. It's recommended that you use a private domain email address! -->
+      <!-- To use the contact form, your site must be on a live web host with PHP! The form will not work locally! -->
+      <h1>Contact</h1>
+      <form role="form" action="" method="post">
+        {% csrf_token %}
+        <div class="row row-sm-offset">
+          <div class="col-md-4 multi-horizontal" data-for="name">
+            <div class="form-group">
+              <label>First Name <span class="required-item">*</span></label>
+              {{ form.name }}
+            </div>
+          </div>
+          <div class="col-md-4 multi-horizontal" data-for="email">
+            <div class="form-group">
+              <label class="form-control-label mbr-fonts-style display-7" for="email-form1-2w">Email*</label>
+              {{ form.email }}
+            </div>
+          </div>
+          <!--div class="col-md-4 multi-horizontal" data-for="phone">
+            <div class="form-group">
+              <label class="form-control-label mbr-fonts-style display-7" for="phone-form1-2w">Phone</label>
+              <input type="tel" class="form-control" name="phone" data-form-field="Phone" id="phone-form1-2w">
+            </div>
+          </div-->
         </div>
-      </div>
+        <div class="form-group" data-for="message">
+          <label class="form-control-label mbr-fonts-style display-7" for="message-form1-2w">Message</label>
+          {{ form.message }}
+        </div>
+
+        <span class="input-group-btn"> <button href="" type="submit"
+                                               class="btn btn-primary btn-form display-4">SEND MESSAGE</button>
+        </span>
+      </form>
     </div>
-
-    <hr>
-
-
+  </div>
+</div>
 
 
 
-    <hr>
 {% endblock %}
-    <!-- Footer -->
-    <footer>
-      <div class="container">
-        <div class="row">
-          <div class="col-lg-8 col-md-10 mx-auto">
-            <ul class="list-inline text-center">
-              <li class="list-inline-item">
-                <a href="#">
+<!-- Footer -->
+<footer>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-md-10 mx-auto">
+        <ul class="list-inline text-center">
+          <li class="list-inline-item">
+            <a href="#">
                   <span class="fa-stack fa-lg">
                     <i class="fa fa-circle fa-stack-2x"></i>
                     <i class="fa fa-twitter fa-stack-1x fa-inverse"></i>
                   </span>
-                </a>
-              </li>
-              <li class="list-inline-item">
-                <a href="#">
+            </a>
+          </li>
+          <li class="list-inline-item">
+            <a href="#">
                   <span class="fa-stack fa-lg">
                     <i class="fa fa-circle fa-stack-2x"></i>
                     <i class="fa fa-facebook fa-stack-1x fa-inverse"></i>
                   </span>
-                </a>
-              </li>
-              <li class="list-inline-item">
-                <a href="#">
+            </a>
+          </li>
+          <li class="list-inline-item">
+            <a href="#">
                   <span class="fa-stack fa-lg">
                     <i class="fa fa-circle fa-stack-2x"></i>
                     <i class="fa fa-github fa-stack-1x fa-inverse"></i>
                   </span>
-                </a>
-              </li>
-            </ul>
-            <p class="copyright text-muted">Copyright &copy; Your Website 2018</p>
-          </div>
-        </div>
+            </a>
+          </li>
+        </ul>
+        <p class="copyright text-muted">Copyright &copy; Your Website 2018</p>
       </div>
-    </footer>
+    </div>
+  </div>
+</footer>
 
-    <!-- Bootstrap core JavaScript -->
-    <script src="vendor/jquery/jquery.min.js"></script>
-    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+<!-- Bootstrap core JavaScript -->
+<script src="vendor/jquery/jquery.min.js"></script>
+<script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
-    <!-- Contact Form JavaScript -->
-    <script src="js/jqBootstrapValidation.js"></script>
-    <script src="js/contact_me.js"></script>
+<!-- Contact Form JavaScript -->
+<script src="js/jqBootstrapValidation.js"></script>
+<script src="js/contact_me.js"></script>
 
-    <!-- Custom scripts for this template -->
-    <script src="js/clean-blog.min.js"></script>
+<!-- Custom scripts for this template -->
+<script src="js/clean-blog.min.js"></script>
 
-  </body>
+</body>
 
 </html>
